@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Detección de Copiado y Pegado</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 2rem;
+        color: #333;
+      }
+
+      h1,
+      h2 {
+        color: #2c3e50;
+      }
+
+      .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box; /* Asegura que padding no desborde */
+      }
+
+      textarea {
+        width: 100%;
+        height: 120px;
+        margin-top: 0.5rem;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        resize: none;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box; /* <-- Esta línea es clave */
+      }
+
+      .mensaje {
+        color: #e74c3c;
+        font-weight: bold;
+        margin-top: 1rem;
+      }
+
+      .subtitulo {
+        margin-top: 0.5rem;
+        color: #7f8c8d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>🔒 Detección de Copiado</h2>
+      <p id="contenido">
+        Este es un texto protegido. Si intentas copiarlo, se detectará y se
+        mostrará un mensaje.
+      </p>
+      <div id="mensajeCopiar" class="mensaje"></div>
+    </div>
+
+    <div class="card">
+      <h2>📥 Detección de Pegado</h2>
+      <p class="subtitulo">
+        Pega aquí cualquier texto. Detectaremos si lo haces:
+      </p>
+      <textarea id="zonaPegado" placeholder="Pega aquí tu texto..."></textarea>
+      <div id="mensajePegar" class="mensaje"></div>
+    </div>
+
+    <script>
+      const mensajeCopiar = document.getElementById("mensajeCopiar");
+      const mensajePegar = document.getElementById("mensajePegar");
+      const zonaPegado = document.getElementById("zonaPegado");
+
+      // Detectar copiar en el contenido protegido
+      document
+        .getElementById("contenido")
+        .addEventListener("copy", function (e) {
+          mensajeCopiar.textContent =
+            "⚠️ ¡Se detectó que copiaste el contenido protegido!";
+          console.log("Texto copiado:", window.getSelection().toString());
+        });
+
+      // Detectar pegar en el área de texto
+      zonaPegado.addEventListener("paste", function (e) {
+        mensajePegar.textContent =
+          "📋 ¡Se detectó que pegaste contenido en la zona permitida!";
+        const contenidoPegado = (
+          e.clipboardData || window.clipboardData
+        ).getData("text");
+        console.log("Texto pegado:", contenidoPegado);
+      });
+    </script>
+  </body>
+</html>
