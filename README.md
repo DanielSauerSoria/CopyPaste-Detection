@@ -1,6 +1,6 @@
 # 🕵️‍♂️ Detección de Copiado y Pegado en HTML
 
-Este proyecto muestra cómo detectar acciones de **copiar** y **pegar** texto dentro de una página web utilizando **HTML**, **CSS** y **JavaScript puro**.
+Este proyecto muestra cómo detectar acciones de **copiar** y **pegar** texto dentro de una página web utilizando **HTML**.
 
 ## 🎯 Objetivo
 
@@ -11,7 +11,7 @@ Este proyecto muestra cómo detectar acciones de **copiar** y **pegar** texto de
 ## 💡 Características
 
 - ✅ Diseño atractivo con tarjetas y estilo moderno.
-- ✅ Mensajes visuales personalizados para copiado y pegado.
+- ✅ Mensajes visuales para copiado y pegado.
 - ✅ Código simple, sin dependencias externas.
 - ✅ Área de texto editable para pruebas de pegado.
 
